@@ -1,4 +1,5 @@
-<%@taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
+
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 
 <!doctype html>
@@ -17,9 +18,14 @@
 
 
          <div class="container">
+
+
                 <div class="alert alert-primary" role="alert">
-                    My age is:
-                    </div>
+                   My age is:
+                     <c:forEach var = "age" items="${requestScope.myAgeToBeDisplayed}">
+                         Item <c:out value = "${getAge}"/><p>
+                     </c:forEach>
+                   </div>
 
 
 
@@ -27,7 +33,7 @@
 
 
 
-         </div>
+        </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

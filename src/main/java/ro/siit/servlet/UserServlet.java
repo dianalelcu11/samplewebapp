@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @WebServlet(urlPatterns={"/myAge"})
 
@@ -23,13 +26,16 @@ public class UserServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.userService.getAge();
+        int age = this.userService.getAge();
+        req.setAttribute("myAgeToBeDisplayed", age);
         req.getRequestDispatcher("/jsps/myAge.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.userService.getAge();
+        int age = this.userService.getAge();
+        req.setAttribute("myAgeToBeDisplayed", age);
+        resp.getWriter().println("age: " + userService.getAge());
         req.getRequestDispatcher("/jsps/myAge.jsp").forward(req, resp);
     }
 }
